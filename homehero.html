@@ -13,7 +13,7 @@
     #hero-bg {
         position:fixed;
         inset:0;
-        background-image:url("images/9378.png");
+        background-image:url("./images/9378.png");
         background-size:contain;
         background-position:center;
         background-repeat:no-repeat;
@@ -48,9 +48,7 @@
     }
 
     /* Heartbeat effect */
-    .heartbeat {
-        animation:beat 1s ease-in-out infinite;
-    }
+    .heartbeat { animation:beat 1s ease-in-out infinite; }
     @keyframes beat {
         0% { transform:translate(-50%, -50%) scale(1); }
         30% { transform:translate(-50%, -50%) scale(1.22); }
@@ -59,9 +57,7 @@
     }
 
     /* Fade out crest */
-    .fade-out {
-        animation:fadeOut .9s forwards;
-    }
+    .fade-out { animation:fadeOut .9s forwards; }
     @keyframes fadeOut {
         from { opacity:1; }
         to { opacity:0; }
@@ -85,9 +81,7 @@
         filter:drop-shadow(0 0 12px rgba(0,0,0,.8));
     }
 
-    #enter-button:hover {
-        transform:scale(1.07);
-    }
+    #enter-button:hover { transform:scale(1.07); }
 
     #enter-label {
         color:#fff;
@@ -106,20 +100,19 @@
 <div id="hero-bg"></div>
 
 <!-- ===== CREST ENTRY ===== -->
-<img id="intro-crest" src="images/crest1.png">
+<img id="intro-crest" src="./images/crest1.png">
 <div id="click-here">CLICK HERE</div>
 
 <!-- ===== ENTER BUTTON ===== -->
 <div id="enter-wrap">
-    <img id="enter-button" src="images/8187.png">
+    <img id="enter-button" src="./images/8187.png">
     <div id="enter-label">ENTER</div>
 </div>
 
 <!-- ===== AUDIO ===== -->
-<audio id="heartbeat-audio" src="music/Heartbeat.mp3"></audio>
+<audio id="heartbeat-audio" src="./music/Heartbeat.mp3"></audio>
 
 <script>
-
 const crest = document.getElementById("intro-crest");
 const clickHere = document.getElementById("click-here");
 const heroBG = document.getElementById("hero-bg");
@@ -151,7 +144,7 @@ function startSequence() {
             enterWrap.classList.add("enter-visible");
         }, 1000);
 
-    }, 5000); // 5 sec heartbeat
+    }, 5000);
 }
 
 crest.addEventListener("click", startSequence);
@@ -160,7 +153,6 @@ clickHere.addEventListener("click", startSequence);
 document.getElementById("enter-button").addEventListener("click", () => {
     window.location.href = "index.html";
 });
-
 </script>
 
 </body>
