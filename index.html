@@ -6,31 +6,36 @@
 <title>EPÒK | Enter Your Era</title>
 
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body, html { width:100%; height:100%; background:#000; overflow:hidden; }
-
-    /* ===== HERO BACKGROUND ===== */
+    /* BACKGROUND IMAGE — EXACT SIZE */
     #hero-bg {
-        position:fixed;
-        inset:0;
-        background-image:url("./images/9378.png");
-        background-size:contain;
-        /* No resizing — use actual PNG resolution */
-    width: auto;
-    height: auto;
-        background-position:center;
-        background-repeat:no-repeat;
-        opacity:0;
-        transition:opacity 1.4s ease;
-        z-index:1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url("./images/9378.png");
+        background-size: 100% 100%;    /* ⭐ EXACT FIT */
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1.4s ease;
+        z-index: 1;
     }
 
-    /* ===== HERO CHARACTER (TRUE PIXEL SIZE) ===== */
-#hero-character {
-    position: fixed;
-    z-index: 3;
-    opacity: 0;
-    pointer-events: none;
+    /* HERO CHARACTER — EXACT SAME SIZE & POSITION */
+    #hero-character {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;     /* ⭐ MATCH BACKGROUND EXACTLY */
+        height: 100vh;
+        object-fit: fill; /* ⭐ FORCE PIXEL-PERFECT OVERLAY */
+        opacity: 0;
+        transition: opacity 1.4s ease;
+        z-index: 2;
+        pointer-events: none;
+    }
+</style>
 
     /* No resizing — use actual PNG resolution */
     width: auto;
