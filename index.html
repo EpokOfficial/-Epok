@@ -106,7 +106,7 @@
         right:20px;
         text-align:center;
         opacity:1;
-        transition:opacity 6s ease;
+        transition:opacity 1s ease;
         z-index:20;
     }
 
@@ -194,20 +194,23 @@ function startSequence() {
     heartbeat.currentTime = 0;
     heartbeat.play().catch(()=>{});
 
+   setTimeout(() => {
+    // Stop crest heartbeat + fade away
+    crest.classList.remove("heartbeat");
+    crest.classList.add("fade-out");
+
+    heartbeat.pause();
+    heartbeat.currentTime = 0;
+
+    // Fade in hero BG
+    heroBG.style.opacity = "1";
+
+    // FADE IN BUTTON 1 SECOND AFTER HERO SHOWS
     setTimeout(() => {
-        crest.classList.remove("heartbeat");
-        crest.classList.add("fade-out");
+        enterWrap.classList.add("enter-visible");
+    }, 1000); // EXACTLY 1 sec after hero appears
 
-        heartbeat.pause();
-
-        heroBG.style.opacity = "1";
-        heroChar.style.opacity = "1";
-
-        setTimeout(() => {
-            enterWrap.classList.add("enter-visible");
-        }, 1000);
-
-    }, 5000);
+}, 5000); // 5 sec heartbeat time
 }
 
 crest.addEventListener("click", startSequence);
