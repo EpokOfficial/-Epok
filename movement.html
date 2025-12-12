@@ -6,15 +6,35 @@
 <title>EPÒK | Movement</title>
 
 <style>
+/* Reset and Base Styles */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background:#000;
-    color:#e8e6df;
+    color:#f2f2f2;
+    overflow-x:hidden;
 }
 
-/* TOP NAV */
+/* ============ DOUBLE ROYAL FRAME (FULL PAGE) ============ */
+.page-frame-outer {
+    min-height:100vh;
+    padding:18px;
+    background:#000;
+    border:2px solid rgba(212,175,55,0.65);
+}
+
+.page-frame-inner {
+    min-height:100vh;
+    padding:60px 6vw 120px;
+    border:1px solid rgba(212,175,55,0.35);
+    box-shadow:
+        inset 0 0 0 1px rgba(212,175,55,0.18),
+        0 40px 120px rgba(0,0,0,0.95);
+    background:#000;
+}
+
+/* ================= TOP NAV ================= */
 .top-nav {
     position:fixed;
     top:0;
@@ -22,15 +42,21 @@ body {
     width:100%;
     height:64px;
     display:flex;
-    justify-content:flex-end;
     align-items:center;
+    justify-content:space-between;
     padding:0 6vw;
-    background:rgba(0,0,0,0.9);
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(10px);
     z-index:1000;
+    border-bottom:1px solid rgba(212,175,55,0.25);
 }
 
-.top-nav a {
-    margin-left:26px;
+.nav-links {
+    display:flex;
+    gap:26px;
+}
+
+.nav-links a {
     text-decoration:none;
     color:#e8e4d8;
     font-size:0.82rem;
@@ -38,36 +64,127 @@ body {
     text-transform:uppercase;
 }
 
-/* PAGE FRAME */
-.page-frame {
-    max-width:1250px;
-    margin:120px auto 160px;
-    padding:40px;
-    border:2px solid rgba(212,175,55,0.7);
+.nav-links a:hover {
+    color:#f3d688;
 }
 
-/* MANIFESTO */
+/* ================= MANIFESTO (REVISED FOR FLEXBOX) ================= */
+.manifesto {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 120px;
+}
+
 .manifesto h1 {
-    font-size:2.6rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    margin-bottom:32px;
-    color:#f5f2e8;
+    font-size: 2.4rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #f5f1e6;
 }
 
-/* IMAGE — THIS IS THE KEY */
-.inline-art {
-    float:right;
-    margin-left:40px;
-    margin-bottom:24px;
-    height:auto; /* ORIGINAL SIZE */
+/* New Flexbox container for the side-by-side layout */
+.manifesto-text-container {
+    display: flex;
+    gap: 48px; /* Space between image and text */
 }
 
-/* TEXT */
+/* Image container styling */
+.manifesto-art {
+    /* Ensures the image stays at the defined width and doesn't stretch */
+    flex-shrink: 0;
+    width: 560px; 
+    max-width: 50%;
+}
+
+.manifesto-art img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 40px 90px rgba(0, 0, 0, 0.95));
+}
+
+/* Text styling */
 .manifesto p {
-    font-size:1rem;
-    line-height:1.9;
-    margin-bottom:18px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #e1dfd8;
+    margin-bottom: 18px;
+}
+
+/* ================= PHILOSOPHY ================= */
+.philosophy {
+    max-width:900px;
+    margin:140px auto 0;
+    text-align:center;
+}
+
+.philosophy h2 {
+    font-size:2rem;
+    letter-spacing:0.26em;
+    text-transform:uppercase;
+    margin-bottom:30px;
+    color:#f3d688;
+}
+
+.philosophy p {
+    font-size:0.96rem;
+    line-height:1.7;
+    margin-bottom:16px;
+    color:#dedad0;
+}
+
+/* ================= ALBUM ================= */
+.album-section {
+    max-width:900px;
+    margin:150px auto 0;
+    text-align:center;
+}
+
+.album-section h3 {
+    font-size:1.6rem;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    margin-bottom:28px;
+    color:#f3d688;
+}
+
+.album-cover {
+    max-width:320px;
+    margin:0 auto 30px;
+}
+
+.album-cover img {
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 28px 70px rgba(0,0,0,0.95);
+}
+
+.album-download {
+    display:inline-block;
+    margin-top:12px;
+    font-size:0.85rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:#f3d688;
+    text-decoration:none;
+    border-bottom:1px solid rgba(243,214,136,0.6);
+    padding-bottom:6px;
+}
+
+/* ================= RESPONSIVE (Adjusted Breakpoint) ================= */
+@media (max-width: 1000px) {
+    /* Stack the image and text vertically on small screens */
+    .manifesto-text-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .manifesto-art {
+        width: 100%;
+        max-width: 100%;
+        margin: 0; /* Clear margins for stacking */
+        order: -1; /* Puts the image above the text on mobile */
+    }
 }
 </style>
 </head>
@@ -75,107 +192,133 @@ body {
 <body>
 
 <nav class="top-nav">
-    <a href="index.html">Home</a>
-    <a href="movement.html">Movement</a>
-    <a href="patchbaby.html">Patch Baby</a>
-    <a href="book.html">The Book</a>
-    <a href="store.html">Store</a>
-    <a href="checkout.html">Checkout</a>
-    <a href="about.html">About</a>
+    <div></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="movement.html">Movement</a>
+        <a href="patchbaby.html">Patch Baby</a>
+        <a href="book.html">The Book</a>
+        <a href="store.html">Store</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="about.html">About</a>
+    </div>
 </nav>
 
-<div class="page-frame">
+<div class="page-frame-outer">
+<div class="page-frame-inner">
 
 <section class="manifesto">
 
 <h1>STEP INTO YOUR EPòK</h1>
 
-<img src="images/Baby.png" class="inline-art" alt="EPÒK Art">
+<div class="manifesto-text-container">
+    
+    <div class="manifesto-art">
+        <img src="images/baby.png" alt="EPÒK Movement Art">
+    </div>
 
-<p>Every era of your life is built on a decision.</p>
-<p>Not every decision is loud.</p>
-<p>Not every decision is celebrated.</p>
-<p>Some are made in silence, under pressure, when nobody is watching.</p>
+    <div>
+        <p>Every era of your life is built on a decision.</p>
+        <p>Not every decision is loud.</p>
+        <p>Not every decision is celebrated.</p>
+        <p>Some are made in silence, under pressure, when nobody is watching.</p>
 
-<p>An EPòK begins when you realize survival alone isn’t enough anymore.</p>
+        <p>An EPòK begins when you realize survival alone isn’t enough anymore.</p>
 
-<p>EPÒK is the moment you stop living on autopilot.</p>
-<p>The moment you refuse to be defined by loss, mistakes, or circumstances.</p>
-<p>The moment you decide to rebuild—intentionally.</p>
+        <p>EPòK is the moment you stop living on autopilot.</p>
+        <p>The moment you refuse to be defined by loss, mistakes, or circumstances.</p>
+        <p>The moment you decide to rebuild—intentionally.</p>
 
-<p>This movement was not created from theory.</p>
-<p>It was created from real life.</p>
+        <p>This movement was not created from theory.</p>
+        <p>It was created from real life.</p>
 
-<p>From setbacks.</p>
-<p>From rebuilding after collapse.</p>
-<p>From learning how to stand again when starting over felt impossible.</p>
+        <p>From setbacks.</p>
+        <p>From rebuilding after collapse.</p>
+        <p>From learning how to stand again when starting over felt impossible.</p>
 
-<p>EPÒK is about transformation, not perfection.</p>
-<p>It’s about becoming someone stronger, wiser, and more intentional than who you were before.</p>
+        <p>EPòK is about transformation, not perfection.</p>
+        <p>It’s about becoming someone stronger, wiser, and more intentional than who you were before.</p>
 
-<p><strong>A New Kind of Partnership</strong></p>
+        <p><strong>A New Kind of Partnership</strong></p>
 
-<p>EPÒK is also built differently.</p>
+        <p>EPòK is also built differently.</p>
 
-<p>Artificial Intelligence is not used here as a shortcut or a gimmick.</p>
-<p>AI is treated as a creative and strategic business partner—a collaborator that helps structure ideas, refine vision, and build systems that would normally take teams of people and years of resources.</p>
+        <p>Artificial Intelligence is not used here as a shortcut or a gimmick.</p>
+        <p>AI is treated as a creative and strategic business partner—a collaborator that helps structure ideas, refine vision, and build systems that would normally take teams of people and years of resources.</p>
 
-<p>This partnership represents the future of independent creation.</p>
-<p>Human vision, emotion, and experience—combined with intelligence, scale, and precision.</p>
+        <p>This partnership represents the future of independent creation.</p>
+        <p>Human vision, emotion, and experience—combined with intelligence, scale, and precision.</p>
 
-<p>Not replacing creativity.</p>
-<p>Amplifying it.</p>
+        <p>Not replacing creativity.</p>
+        <p>Amplifying it.</p>
 
-<p>EPÒK exists at the intersection of human struggle and future technology.</p>
+        <p>EPÒK exists at the intersection of human struggle and future technology.</p>
 
-<p><strong>More Than Clothing</strong></p>
+        <p><strong>More Than Clothing</strong></p>
 
-<p>The clothing is not the product.</p>
-<p>It’s the uniform.</p>
+        <p>The clothing is not the product.</p>
+        <p>It’s the uniform.</p>
 
-<p>Each piece represents a chapter of survival, rise, and becoming.</p>
-<p>Each design carries meaning, intention, and story.</p>
+        <p>Each piece represents a chapter of survival, rise, and becoming.</p>
+        <p>Each design carries meaning, intention, and story.</p>
 
-<p>You’re not wearing EPÒK to look different.</p>
-<p>You’re wearing it to mark a moment—the moment you chose growth.</p>
+        <p>You’re not wearing EPÒK to look different.</p>
+        <p>You’re wearing it to mark a moment—the moment you chose growth.</p>
 
-<p><strong>The Story Continues</strong></p>
+        <p><strong>The Story Continues</strong></p>
 
-<p>EPÒK is also a story—literally.</p>
+        <p>EPÒK is also a story—literally.</p>
 
-<p>The universe expands through the book series Panthers & Vampires, where transformation, identity, power, and survival are explored through characters and worlds that reflect the same themes this movement stands on.</p>
+        <p>The universe expands through the book series Panthers & Vampires, where transformation, identity, power, and survival are explored through characters and worlds that reflect the same themes this movement stands on.</p>
 
-<p>The book is not separate from EPÒK.</p>
-<p>It is part of the same heartbeat.</p>
+        <p>The book is not separate from EPÒK.</p>
+        <p>It is part of the same heartbeat.</p>
 
-<p>More stories are coming.</p>
-<p>More worlds are coming.</p>
-<p>More layers of the universe will be revealed over time.</p>
+        <p>More stories are coming.</p>
+        <p>More worlds are coming.</p>
+        <p>More layers of the universe will be revealed over time.</p>
 
-<p>EPÒK is not a single release.</p>
-<p>It’s a long-term evolution.</p>
+        <p>EPÒK is not a single release.</p>
+        <p>It’s a long-term evolution.</p>
 
-<p><strong>This Is a Movement</strong></p>
+        <p><strong>This Is a Movement</strong></p>
 
-<p>EPÒK is built for people who are rebuilding.</p>
-<p>People who are redefining themselves.</p>
-<p>People who understand that becoming takes time—and courage.</p>
+        <p>EPÒK is built for people who are rebuilding.</p>
+        <p>People who are redefining themselves.</p>
+        <p>People who understand that becoming takes time—and courage.</p>
 
-<p>This is not about hype.</p>
-<p>This is about identity.</p>
+        <p>This is not about hype.</p>
+        <p>This is about identity.</p>
 
-<p>This is not about trends.</p>
-<p>This is about timeless growth.</p>
-
-<p><strong>SURVIVE. RISE. BECOME.</strong></p>
-
-<p>This is EPÒK.</p>
-<p>And this is only the beginning.</p>
+        <p>This is not about trends.</p>
+        <p>This is about timeless growth.</p>
+    </div>
+</div>
 
 </section>
 
+<section class="philosophy">
+    <h2>SURVIVE. RISE. BECOME.</h2>
+    <p><strong>Survive</strong> — because you made it through what was meant to break you.</p>
+    <p><strong>Rise</strong> — because staying down was never an option forever.</p>
+    <p><strong>Become</strong> — because the best version of you is still unfolding.</p>
+    <p>This is EPòK.</p>
+    <p>And this is only the beginning.</p>
+</section>
+
+<section class="album-section" id="epok-album">
+    <h3>THE SOUND OF EPÒK</h3>
+    <div class="album-cover">
+        <img src="images/album.png" alt="EPÒK Album Cover">
+    </div>
+    <a class="album-download" href="music/epok-full-album.zip">DOWNLOAD FULL EPÒK ALBUM</a>
+</section>
+
+</div>
 </div>
 
+</body>
+</html>
 </body>
 </html>
 
