@@ -15,7 +15,7 @@ body {
     overflow-x:hidden;
 }
 
-/* ============= TOP NAVIGATION ============= */
+/* ================= TOP NAV ================= */
 .top-nav {
     position:fixed;
     top:0;
@@ -26,8 +26,8 @@ body {
     align-items:center;
     justify-content:space-between;
     padding:0 6vw;
-    background:rgba(0,0,0,0.65);
-    backdrop-filter:blur(8px);
+    background:rgba(0,0,0,0.8);
+    backdrop-filter:blur(10px);
     z-index:1000;
 }
 
@@ -42,137 +42,143 @@ body {
     font-size:0.82rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
-    transition:color .2s ease;
 }
 
 .nav-links a:hover {
     color:#f3d688;
 }
 
+/* ================= PAGE WRAP ================= */
 .page-wrap {
     min-height:100vh;
-    background:radial-gradient(circle at top, #1a1a22 0%, #050509 55%, #000 100%);
+    background:
+        radial-gradient(circle at top, #0a0a0f 0%, #020203 45%, #000 100%);
     padding-top:64px;
 }
 
-/* ============= GENERAL SECTIONS ============= */
+/* ================= SECTIONS ================= */
 section {
-    padding:90px 8vw;
+    padding:110px 8vw;
 }
 
-.section-title {
-    font-size:1.05rem;
-    letter-spacing:0.25em;
-    text-transform:uppercase;
-    color:#c4a86b;
-    margin-bottom:24px;
+/* ================= ROYAL GOLD FRAME ================= */
+.royal-frame {
+    border:1.5px solid rgba(212,175,55,0.55);
+    box-shadow:
+        inset 0 0 0 1px rgba(212,175,55,0.25),
+        0 25px 70px rgba(0,0,0,0.9);
+    padding:60px 56px;
+    border-radius:26px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,0.06),
+            rgba(0,0,0,0.0) 40%,
+            rgba(212,175,55,0.04)
+        );
 }
 
-/* ============= MANIFESTO LAYOUT ============= */
+/* ================= MANIFESTO ================= */
 .manifesto-wrap {
-    max-width:1100px;
+    max-width:1200px;
     margin:0 auto;
-    display:flex;
-    gap:40px;
-    align-items:flex-start;
-}
-
-.manifesto-text {
-    flex:1 1 60%;
 }
 
 .manifesto-text h1 {
-    font-size:2.2rem;
-    letter-spacing:0.12em;
+    font-size:2.3rem;
+    letter-spacing:0.14em;
     text-transform:uppercase;
-    margin-bottom:28px;
+    margin-bottom:36px;
     color:#f4f1e6;
+}
+
+/* INLINE ART */
+.manifesto-inline-art {
+    float:right;
+    width:460px;
+    max-width:46%;
+    margin:8px 0 28px 40px;
+}
+
+.manifesto-inline-art img {
+    width:100%;
+    height:auto;
+    filter:drop-shadow(0 30px 70px rgba(0,0,0,0.9));
 }
 
 .manifesto-text p {
     font-size:0.98rem;
-    line-height:1.7;
+    line-height:1.75;
     color:#e3e1da;
     margin-bottom:16px;
 }
 
-.manifesto-art {
-    flex:0 0 340px;
-}
-
-.manifesto-art img {
-    width:100%;
-    height:auto;
-    border-radius:18px;
-    box-shadow:0 22px 55px rgba(0,0,0,0.8);
-}
-
-/* ============= PHILOSOPHY ============= */
+/* ================= PHILOSOPHY ================= */
 .philosophy {
     max-width:900px;
-    margin:80px auto 0;
+    margin:120px auto 0;
     text-align:center;
 }
 
 .philosophy h2 {
-    font-size:1.8rem;
-    letter-spacing:0.18em;
+    font-size:1.9rem;
+    letter-spacing:0.24em;
     text-transform:uppercase;
     margin-bottom:28px;
 }
 
 .philosophy p {
-    font-size:0.95rem;
+    font-size:0.96rem;
     line-height:1.6;
     margin-bottom:14px;
     color:#dedad0;
 }
 
-/* ============= ALBUM SECTION ============= */
+/* ================= ALBUM ================= */
 .album-section {
     max-width:900px;
-    margin:90px auto 0;
+    margin:130px auto 0;
     text-align:center;
 }
 
 .album-section h3 {
     font-size:1.6rem;
-    letter-spacing:0.2em;
+    letter-spacing:0.22em;
     text-transform:uppercase;
-    margin-bottom:22px;
+    margin-bottom:26px;
     color:#f3d688;
 }
 
 .album-cover {
-    max-width:260px;
-    margin:0 auto 22px;
+    max-width:300px;
+    margin:0 auto 26px;
 }
 
 .album-cover img {
     width:100%;
-    border-radius:14px;
-    box-shadow:0 18px 45px rgba(0,0,0,0.85);
+    border-radius:16px;
+    box-shadow:0 22px 55px rgba(0,0,0,0.9);
 }
 
 .album-download {
     display:inline-block;
-    margin-top:12px;
+    margin-top:10px;
     font-size:0.85rem;
     letter-spacing:0.25em;
     text-transform:uppercase;
-    text-decoration:none;
     color:#f3d688;
+    text-decoration:none;
     border-bottom:1px solid rgba(243,214,136,0.6);
     padding-bottom:6px;
 }
 
-/* ============= RESPONSIVE ============= */
+/* ================= RESPONSIVE ================= */
 @media (max-width:900px) {
-    .manifesto-wrap {
-        flex-direction:column;
-    }
-    .manifesto-art {
-        margin-top:36px;
+    .manifesto-inline-art {
+        float:none;
+        max-width:100%;
+        width:100%;
+        margin:30px 0;
     }
 }
 </style>
@@ -197,11 +203,17 @@ section {
 
 <section>
 
+<div class="royal-frame">
+
 <div class="manifesto-wrap">
 
 <div class="manifesto-text">
 
 <h1>STEP INTO YOUR EPòK</h1>
+
+<div class="manifesto-inline-art">
+    <img src="images/baby.png" alt="EPÒK Movement Art">
+</div>
 
 <p>Every era of your life is built on a decision.</p>
 <p>Not every decision is loud.</p>
@@ -263,7 +275,7 @@ section {
 <p>More worlds are coming.</p>
 <p>More layers of the universe will be revealed over time.</p>
 
-<p>EPòK is not a single release.</p>
+<p>EPÒK is not a single release.</p>
 <p>It’s a long-term evolution.</p>
 
 <p><strong>This Is a Movement</strong></p>
@@ -280,30 +292,24 @@ section {
 
 </div>
 
-<div class="manifesto-art">
-    <img src="images/baby.png" alt="EPÒK Movement Art">
 </div>
 
 </div>
 
 <div class="philosophy">
     <h2>SURVIVE. RISE. BECOME.</h2>
-
     <p><strong>Survive</strong> — because you made it through what was meant to break you.</p>
     <p><strong>Rise</strong> — because staying down was never an option forever.</p>
     <p><strong>Become</strong> — because the best version of you is still unfolding.</p>
-
     <p>This is EPòK.</p>
     <p>And this is only the beginning.</p>
 </div>
 
 <div class="album-section" id="epok-album">
     <h3>THE SOUND OF EPÒK</h3>
-
     <div class="album-cover">
-        <img src="images/album-cover.png" alt="EPÒK Album Cover">
+        <img src="images/album.png" alt="EPÒK Album Cover">
     </div>
-
     <a class="album-download" href="music/epok-full-album.zip">DOWNLOAD FULL EPÒK ALBUM</a>
 </div>
 
@@ -312,4 +318,3 @@ section {
 </div>
 </body>
 </html>
-
