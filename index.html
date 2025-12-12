@@ -19,7 +19,7 @@
         width:100vw;
         height:100vh;
         background-image:url("./images/9378.png");
-        background-size:100% 100%; /* exact pixel match */
+        background-size:100% 100%;
         background-repeat:no-repeat;
         background-position:center;
         opacity:0;
@@ -34,15 +34,14 @@
         position:fixed;
         top:0;
         left:0;
-        width:100vw; 
-        height:100vh; 
-        object-fit:fill; 
+        width:100vw;
+        height:100vh;
+        object-fit:fill;
         opacity:0;
         transition:opacity 1.4s ease;
         z-index:2;
         pointer-events:none;
 
-        /* Camera drift animation */
         animation:cameraMove 14s ease-in-out infinite alternate;
     }
 
@@ -90,7 +89,9 @@
     }
 
     /* Crest fade */
-    .fade-out { animation:fadeOut .9s forwards; }
+    .fade-out {
+        animation:fadeOut .9s forwards;
+    }
     @keyframes fadeOut {
         from { opacity:1; }
         to   { opacity:0; }
@@ -101,8 +102,8 @@
     /* ------------------------------ */
     #enter-wrap {
         position:fixed;
-        bottom:15px;
-        right:15px;
+        bottom:20px;
+        right:20px;
         text-align:center;
         opacity:0;
         transition:opacity 1s ease;
@@ -110,22 +111,45 @@
     }
 
     #enter-button {
-        width:120px;
+        width:130px;
         cursor:pointer;
         transition:transform .3s ease;
         filter:drop-shadow(0 0 12px rgba(0,0,0,.9));
     }
 
-    #enter-button:hover { transform:scale(1.07); }
-
     #enter-label {
         color:#fff;
         font-size:.75rem;
         letter-spacing:.25em;
-        margin-top:3px;
+        margin-top:4px;
+        text-shadow:0 0 8px #000;
     }
 
     .enter-visible { opacity:1; }
+
+    /* ------------------------------ */
+    /*         MOBILE FIXES           */
+    /* ------------------------------ */
+    @media(max-width:700px) {
+
+        #enter-button {
+            width:90px; /* smaller for mobile */
+        }
+
+        #enter-wrap {
+            bottom:12px;
+            right:12px;
+        }
+
+        #click-here {
+            top:calc(50% + 110px);
+            font-size:.85rem;
+        }
+
+        #intro-crest {
+            width:180px;
+        }
+    }
 </style>
 </head>
 
@@ -144,7 +168,7 @@
 <!-- ENTER BUTTON -->
 <div id="enter-wrap">
     <img id="enter-button" src="./images/8187.png">
-    <div id="enter-label">ENTER</div>
+    <div id="enter-label">ENTER HERE</div>
 </div>
 
 <!-- AUDIO -->
