@@ -105,7 +105,7 @@
         bottom:20px;
         right:20px;
         text-align:center;
-        opacity:1;
+        opacity:0;
         transition:opacity 1s ease;
         z-index:20;
     }
@@ -125,7 +125,7 @@
         text-shadow:0 0 8px #000;
     }
 
-    .enter-visible { opacity:100; }
+    .enter-visible { opacity:1; }
 
     /* ------------------------------ */
     /*         MOBILE FIXES           */
@@ -171,7 +171,7 @@
     <div id="enter-label">ENTER HERE</div>
 </div>
 
-<!-- HEARTBEAT AUDIO -->
+<!-- AUDIO -->
 <audio id="heartbeat-audio" src="./music/Heartbeat.mp3"></audio>
 
 <script>
@@ -194,24 +194,30 @@ function startSequence() {
     heartbeat.currentTime = 0;
     heartbeat.play().catch(()=>{});
 
- setTimeout(() => {
-    // Stop crest heartbeat + fade away
-    crest.classList.remove("heartbeat");
-    crest.classList.add("fade-out");
-
-    heartbeat.pause();
-    heartbeat.currentTime = 0;
-
-    // Fade in hero BG
-    heroBG.style.opacity = "1";
-
-    // FADE IN BUTTON 1 SECOND AFTER HERO SHOWS
     setTimeout(() => {
-        enterWrap.classList.add("enter-visible");
-    }, 1000); // EXACTLY 1 sec after hero appears
+        crest.classList.remove("heartbeat");
+        crest.classList.add("fade-out");
 
-}, 5000); // 6 sec heartbeat time
+        heartbeat.pause();
+        heartbeat.currentTime = 0;
+
+        heroBG.style.opacity = "1";
+        heroChar.style.opacity = "1";
+
+        setTimeout(() => {
+            enterWrap.classList.add("enter-visible");
+        }, 1000);
+
+    }, 5000);
+}
+
+crest.addEventListener("click", startSequence);
+clickHere.addEventListener("click", startSequence);
+
 document.getElementById("enter-button").addEventListener("click", () => {
     window.location.href = "index.html";
 });
 </script>
+
+</body>
+</html>
