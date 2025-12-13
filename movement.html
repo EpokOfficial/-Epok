@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,14 +18,66 @@ body {
 /* ============ DOUBLE ROYAL FRAME (FULL PAGE) ============ */
 .page-frame-outer {
     min-height:100vh;
-    padding:18px;
+    padding:22px;
     background:#000;
     border:2px solid rgba(212,175,55,0.65);
+    position:relative;
+}
+
+/* LEFT & RIGHT VERTICAL INSCRIPTION */
+.page-frame-outer::before,
+.page-frame-outer::after {
+    content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:22px;
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    font-size:0.65rem;
+    letter-spacing:0.35em;
+    color:rgba(212,175,55,0.28);
+    pointer-events:none;
+}
+
+.page-frame-outer::before {
+    left:6px;
+}
+
+.page-frame-outer::after {
+    right:6px;
+    transform:rotate(180deg);
+}
+
+/* BOTTOM ARABIC INSCRIPTION */
+.page-frame-outer .arabic-border {
+    position:absolute;
+    bottom:6px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:0.7rem;
+    letter-spacing:0.45em;
+    color:rgba(212,175,55,0.28);
+    pointer-events:none;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+.page-frame-outer .arabic-border span {
+    display:inline-block;
+    padding-left:100%;
+    animation:arabic-scroll 40s linear infinite;
+}
+
+@keyframes arabic-scroll {
+    from { transform:translateX(0); }
+    to { transform:translateX(-100%); }
 }
 
 .page-frame-inner {
     min-height:100vh;
-    padding:0 6vw 120px; /* TOP PADDING REMOVED */
+    padding:0 6vw 120px;
     border:1px solid rgba(212,175,55,0.35);
     box-shadow:
         inset 0 0 0 1px rgba(212,175,55,0.18),
@@ -72,19 +122,18 @@ body {
 /* ================= EPÒK MESSAGE PANELS ================= */
 .epok-panel {
     max-width:1600px;
-    margin:0 auto;            /* NO vertical margin */
-    padding-top:32px;         /* controlled spacing */
+    margin:0 auto;
+    padding-top:32px;
 }
 
 .epok-panel:first-of-type {
-    padding-top:120px;        /* ONLY space below nav */
+    padding-top:120px;
 }
 
 .epok-panel img {
     width:100%;
     height:auto;
-    display:block;            /* removes image gaps */
-    margin:0;
+    display:block;
 }
 
 /* ================= PHILOSOPHY ================= */
@@ -147,7 +196,7 @@ body {
     padding-bottom:6px;
 }
 
-/* ================= MOBILE OPTIMIZATION ================= */
+/* ================= MOBILE ================= */
 @media (max-width:768px) {
 
     .page-frame-inner {
@@ -163,10 +212,15 @@ body {
         padding-top:96px;
     }
 
-    .philosophy,
-    .album-section {
-        padding:0 4vw;
-        margin-top:100px;
+    .page-frame-outer::before,
+    .page-frame-outer::after {
+        font-size:0.55rem;
+        letter-spacing:0.3em;
+    }
+
+    .page-frame-outer .arabic-border {
+        font-size:0.6rem;
+        letter-spacing:0.3em;
     }
 }
 </style>
@@ -188,9 +242,14 @@ body {
 </nav>
 
 <div class="page-frame-outer">
+
+    <!-- ARABIC BOTTOM BORDER -->
+    <div class="arabic-border">
+        <span>قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • </span>
+    </div>
+
 <div class="page-frame-inner">
 
-<!-- CONTINUOUS EPÒK MANIFESTO -->
 <section class="epok-panel">
     <img src="images/epokmessage1.png" alt="EPÒK Manifesto Panel 1">
 </section>
@@ -205,6 +264,15 @@ body {
 
 <section class="epok-panel">
     <img src="images/epokmessage4.png" alt="EPÒK Manifesto Panel 4">
+</section>
+
+<section class="philosophy">
+    <h2>SURVIVE. RISE. BECOME.</h2>
+    <p><strong>Survive</strong> — because you made it through what was meant to break you.</p>
+    <p><strong>Rise</strong> — because staying down was never an option forever.</p>
+    <p><strong>Become</strong> — because the best version of you is still unfolding.</p>
+    <p>This is EPÒK.</p>
+    <p>And this is only the beginning.</p>
 </section>
 
 <section class="album-section" id="epok-album">
