@@ -158,16 +158,6 @@ html, body {
     pointer-events:none;
 }
 
-@media (hover:hover) {
-    .world-interactive:hover {
-        transform:scale(1.06);
-    }
-}
-
-.world-interactive.active {
-    transform:scale(1.06);
-}
-
 /* IN-WORLD NAV */
 .world-nav {
     position:absolute;
@@ -245,9 +235,6 @@ const stage = document.getElementById("worldStage");
 const toBoy = document.getElementById("toBoy");
 const interactive = document.getElementById("interactiveWorld");
 
-interactive.addEventListener("click", () => {
-    interactive.classList.toggle("active");
-});
 
 toBoy.addEventListener("click", () => {
     stage.classList.add("fade-out");
