@@ -67,14 +67,13 @@ body {
     color:#f3d688;
 }
 
-/* ================= EPÒK MESSAGE ART ================= */
-.epok-message {
-    max-width:1600px;          /* ENLARGED */
+/* ================= EPÒK MESSAGE PANELS ================= */
+.epok-panel {
+    max-width:1600px;
     margin:140px auto 0;
-    text-align:center;
 }
 
-.epok-message img {
+.epok-panel img {
     width:100%;
     height:auto;
     display:block;
@@ -84,7 +83,7 @@ body {
 /* ================= PHILOSOPHY ================= */
 .philosophy {
     max-width:900px;
-    margin:140px auto 0;
+    margin:160px auto 0;
     text-align:center;
 }
 
@@ -140,6 +139,33 @@ body {
     border-bottom:1px solid rgba(243,214,136,0.6);
     padding-bottom:6px;
 }
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 768px) {
+
+    .page-frame-inner {
+        padding:80px 3vw 100px;
+    }
+
+    .epok-panel {
+        max-width:100%;
+        margin:100px auto 0;
+    }
+
+    .epok-panel img {
+        width:100%;
+    }
+
+    .philosophy {
+        margin:120px auto 0;
+        padding:0 4vw;
+    }
+
+    .album-section {
+        margin:120px auto 0;
+        padding:0 4vw;
+    }
+}
 </style>
 </head>
 
@@ -161,13 +187,21 @@ body {
 <div class="page-frame-outer">
 <div class="page-frame-inner">
 
-<!-- UNIFIED EPÒK MESSAGE ART -->
-<section class="epok-message">
-    <img src="images/epokmessage.png" alt="STEP INTO YOUR EPÒK Manifesto">
+<!-- EPÒK MESSAGE PANELS -->
+<section class="epok-panel">
+    <img src="images/epokmessage1.png" alt="EPÒK Manifesto Panel 1">
 </section>
 
->
+<section class="epok-panel">
+    <img src="images/epokmessage2.png" alt="EPÒK Manifesto Panel 2">
+</section>
 
+<section class="epok-panel">
+    <img src="images/epokmessage3.png" alt="EPÒK Manifesto Panel 3">
+</section>
+
+<section class="epok-panel">
+    <img src="images/epokmessage4.png" alt="EPÒK Manifesto Panel 4">
 <section class="album-section" id="epok-album">
     <h3>THE SOUND OF EPÒK</h3>
     <div class="album-cover">
