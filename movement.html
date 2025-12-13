@@ -24,29 +24,44 @@ body {
     position:relative;
 }
 
-/* LEFT & RIGHT VERTICAL INSCRIPTION */
+/* LEFT & RIGHT VERTICAL INSCRIPTION (SCROLLING) */
 .page-frame-outer::before,
 .page-frame-outer::after {
-    content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
+    content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
     position:absolute;
-    top:0;
-    bottom:0;
+    top:22px;
+    bottom:22px;
     width:22px;
     writing-mode:vertical-rl;
     text-orientation:mixed;
     font-size:0.65rem;
     letter-spacing:0.35em;
-    color:#ffffff; /* CHANGED TO WHITE */
+    color:#ffffff;
     pointer-events:none;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
+/* LEFT SIDE — BOTTOM → TOP */
 .page-frame-outer::before {
     left:6px;
+    animation:leftScroll 28s linear infinite;
 }
 
+@keyframes leftScroll {
+    from { transform:translateY(100%); }
+    to   { transform:translateY(-100%); }
+}
+
+/* RIGHT SIDE — TOP → BOTTOM (CENTERED INSIDE BORDER) */
 .page-frame-outer::after {
     right:6px;
-    transform:rotate(180deg);
+    animation:rightScroll 28s linear infinite;
+}
+
+@keyframes rightScroll {
+    from { transform:translateY(-100%); }
+    to   { transform:translateY(100%); }
 }
 
 /* BOTTOM ARABIC INSCRIPTION */
@@ -58,7 +73,7 @@ body {
     text-align:center;
     font-size:0.7rem;
     letter-spacing:0.45em;
-    color:#ffffff; /* CHANGED TO WHITE */
+    color:#ffffff;
     pointer-events:none;
     white-space:nowrap;
     overflow:hidden;
@@ -67,7 +82,7 @@ body {
 .page-frame-outer .arabic-border span {
     display:inline-block;
     padding-left:100%;
-    animation:arabic-scroll 40s linear infinite;
+    animation:arabic-scroll 18s linear infinite;
 }
 
 @keyframes arabic-scroll {
@@ -289,4 +304,6 @@ body {
 </div>
 
 </body>
+</html>
+
 </html>
