@@ -6,158 +6,288 @@
 <title>EPÒK | Movement</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-body{
-    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background:#000;
-    color:#fff;
+    color:#f2f2f2;
     overflow-x:hidden;
 }
 
-/* ================= FRAME ================= */
-.page-frame-outer{
+/* ============ DOUBLE ROYAL FRAME (FULL PAGE) ============ */
+.page-frame-outer {
     min-height:100vh;
-    padding:24px;
-    border:2px solid rgba(212,175,55,.65);
+    padding:22px;
+    background:#000;
+    border:2px solid rgba(212,175,55,0.65);
     position:relative;
 }
 
-/* ================= SHARED BORDER STYLE ================= */
-.border{
+/* LEFT & RIGHT VERTICAL INSCRIPTION */
+.page-frame-outer::before,
+.page-frame-outer::after {
+    content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
     position:absolute;
-    overflow:hidden;
+    top:0;
+    bottom:0;
+    width:22px;
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    font-size:0.65rem;
+    letter-spacing:0.35em;
+    color:rgba(212,175,55,0.28);
     pointer-events:none;
-    font-size:.7rem;
-    letter-spacing:.35em;
-    white-space:nowrap;
-    color:#fff;
 }
 
-/* ================= BOTTOM (RIGHT → LEFT, FASTER) ================= */
-.border-bottom{
-    left:24px;
-    right:24px;
-    bottom:6px;
-    height:24px;
-}
-
-.border-bottom .track{
-    display:flex;
-    width:200%;
-    animation:scroll-left-fast 18s linear infinite;
-}
-
-@keyframes scroll-left-fast{
-    from{transform:translateX(0)}
-    to{transform:translateX(-50%)}
-}
-
-/* ================= LEFT (BOTTOM → TOP) ================= */
-.border-left{
-    top:24px;
-    bottom:24px;
+.page-frame-outer::before {
     left:6px;
-    width:24px;
 }
 
-.border-left .track{
-    display:flex;
-    flex-direction:column;
-    writing-mode:vertical-rl;
-    height:200%;
-    animation:scroll-up 28s linear infinite;
-}
-
-@keyframes scroll-up{
-    from{transform:translateY(0)}
-    to{transform:translateY(-50%)}
-}
-
-/* ================= RIGHT (TOP → BOTTOM) ================= */
-.border-right{
-    top:24px;
-    bottom:24px;
+.page-frame-outer::after {
     right:6px;
-    width:24px;
+    transform:rotate(180deg);
 }
 
-.border-right .track{
-    display:flex;
-    flex-direction:column;
-    writing-mode:vertical-rl;
-    height:200%;
-    animation:scroll-down 28s linear infinite;
+/* BOTTOM ARABIC INSCRIPTION */
+.page-frame-outer .arabic-border {
+    position:absolute;
+    bottom:6px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:0.7rem;
+    letter-spacing:0.45em;
+    color:rgba(212,175,55,0.28);
+    pointer-events:none;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
-@keyframes scroll-down{
-    from{transform:translateY(-50%)}
-    to{transform:translateY(0)}
+.page-frame-outer .arabic-border span {
+    display:inline-block;
+    padding-left:100%;
+    animation:arabic-scroll 40s linear infinite;
 }
 
-/* ================= INNER FRAME ================= */
-.page-frame-inner{
+@keyframes arabic-scroll {
+    from { transform:translateX(0); }
+    to { transform:translateX(-100%); }
+}
+
+.page-frame-inner {
     min-height:100vh;
     padding:0 6vw 120px;
-    border:1px solid rgba(212,175,55,.35);
-    box-shadow:0 40px 120px rgba(0,0,0,.95);
+    border:1px solid rgba(212,175,55,0.35);
+    box-shadow:
+        inset 0 0 0 1px rgba(212,175,55,0.18),
+        0 40px 120px rgba(0,0,0,0.95);
+    background:#000;
 }
 
-/* ================= PANELS ================= */
-.epok-panel{
+/* ================= TOP NAV ================= */
+.top-nav {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6vw;
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid rgba(212,175,55,0.25);
+}
+
+.nav-links {
+    display:flex;
+    gap:26px;
+}
+
+.nav-links a {
+    text-decoration:none;
+    color:#e8e4d8;
+    font-size:0.82rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+}
+
+.nav-links a:hover {
+    color:#f3d688;
+}
+
+/* ================= EPÒK MESSAGE PANELS ================= */
+.epok-panel {
     max-width:1600px;
     margin:0 auto;
+    padding-top:32px;
+}
+
+.epok-panel:first-of-type {
     padding-top:120px;
 }
 
-.epok-panel img{
+.epok-panel img {
     width:100%;
+    height:auto;
     display:block;
 }
 
+/* ================= PHILOSOPHY ================= */
+.philosophy {
+    max-width:900px;
+    margin:120px auto 0;
+    text-align:center;
+}
+
+.philosophy h2 {
+    font-size:2rem;
+    letter-spacing:0.26em;
+    text-transform:uppercase;
+    margin-bottom:30px;
+    color:#f3d688;
+}
+
+.philosophy p {
+    font-size:0.96rem;
+    line-height:1.7;
+    margin-bottom:16px;
+    color:#dedad0;
+}
+
+/* ================= ALBUM ================= */
+.album-section {
+    max-width:900px;
+    margin:120px auto 0;
+    text-align:center;
+}
+
+.album-section h3 {
+    font-size:1.6rem;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    margin-bottom:28px;
+    color:#f3d688;
+}
+
+.album-cover {
+    max-width:320px;
+    margin:0 auto 30px;
+}
+
+.album-cover img {
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 28px 70px rgba(0,0,0,0.95);
+}
+
+.album-download {
+    display:inline-block;
+    margin-top:12px;
+    font-size:0.85rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:#f3d688;
+    text-decoration:none;
+    border-bottom:1px solid rgba(243,214,136,0.6);
+    padding-bottom:6px;
+}
+
 /* ================= MOBILE ================= */
-@media(max-width:768px){
-    .border{font-size:.55rem;letter-spacing:.25em}
+@media (max-width:768px) {
+
+    .page-frame-inner {
+        padding:0 3vw 100px;
+    }
+
+    .epok-panel {
+        max-width:100%;
+        padding-top:24px;
+    }
+
+    .epok-panel:first-of-type {
+        padding-top:96px;
+    }
+
+    .page-frame-outer::before,
+    .page-frame-outer::after {
+        font-size:0.55rem;
+        letter-spacing:0.3em;
+    }
+
+    .page-frame-outer .arabic-border {
+        font-size:0.6rem;
+        letter-spacing:0.3em;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<nav class="top-nav">
+    <div></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="movement.html">Movement</a>
+        <a href="patchbaby.html">Patch Baby</a>
+        <a href="book.html">The Book</a>
+        <a href="store.html">Store</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
 <div class="page-frame-outer">
 
-    <!-- LEFT BORDER (BOTTOM → TOP) -->
-    <div class="border border-left">
-        <div class="track">
-            <span>SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK</span>
-            <span>SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK</span>
-        </div>
+    <!-- ARABIC BOTTOM BORDER -->
+    <div class="arabic-border">
+        <span>قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • </span>
     </div>
 
-    <!-- RIGHT BORDER (TOP → BOTTOM) -->
-    <div class="border border-right">
-        <div class="track">
-            <span>SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK</span>
-            <span>SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK</span>
-        </div>
-    </div>
+<div class="page-frame-inner">
 
-    <!-- BOTTOM BORDER (RIGHT → LEFT, FASTER) -->
-    <div class="border border-bottom">
-        <div class="track">
-            <span>قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك</span>
-            <span>قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك</span>
-        </div>
-    </div>
+<section class="epok-panel">
+    <img src="images/epokmessage1.png" alt="EPÒK Manifesto Panel 1">
+</section>
 
-    <div class="page-frame-inner">
-        <section class="epok-panel"><img src="images/epokmessage1.png"></section>
-        <section class="epok-panel"><img src="images/epokmessage2.png"></section>
-        <section class="epok-panel"><img src="images/epokmessage3.png"></section>
-        <section class="epok-panel"><img src="images/epokmessage4.png"></section>
-    </div>
+<section class="epok-panel">
+    <img src="images/epokmessage2.png" alt="EPÒK Manifesto Panel 2">
+</section>
 
+<section class="epok-panel">
+    <img src="images/epokmessage3.png" alt="EPÒK Manifesto Panel 3">
+</section>
+
+<section class="epok-panel">
+    <img src="images/epokmessage4.png" alt="EPÒK Manifesto Panel 4">
+</section>
+
+<section class="philosophy">
+    <h2>SURVIVE. RISE. BECOME.</h2>
+    <p><strong>Survive</strong> — because you made it through what was meant to break you.</p>
+    <p><strong>Rise</strong> — because staying down was never an option forever.</p>
+    <p><strong>Become</strong> — because the best version of you is still unfolding.</p>
+    <p>This is EPÒK.</p>
+    <p>And this is only the beginning.</p>
+</section>
+
+<section class="album-section" id="epok-album">
+    <h3>THE SOUND OF EPÒK</h3>
+    <div class="album-cover">
+        <img src="images/album.png" alt="EPÒK Album Cover">
+    </div>
+    <a class="album-download" href="music/epok-full-album.zip">
+        DOWNLOAD FULL EPÒK ALBUM
+    </a>
+</section>
+
+</div>
 </div>
 
 </body>
 </html>
+
